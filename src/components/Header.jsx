@@ -44,7 +44,7 @@ const Header = () => {
           </div>
         </Link>
         <Link
-          to="/loguin"
+          to="/login"
           className="flex items-center border border-gray-300 pr-4 pl-6 py-2 rounded-full shadow-md gap-2"
         >
           <svg
