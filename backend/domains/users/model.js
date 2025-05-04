@@ -7,3 +7,5 @@ const userSchema = new Schema({
 });
 
 export default model("User", userSchema);
+
+//Criando um esqueleto do usuario

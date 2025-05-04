@@ -12,4 +12,4 @@ export const connectDb = async () => {
   }
 };
 
-// db faz a conexão
+// db faz a conexão ao banco de dados MONGO
