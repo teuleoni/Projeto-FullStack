@@ -20,7 +20,7 @@ const Login = ({ user, setUser }) => {
         setUser(userDoc);
         setRedirection(true);
       } catch (error) {
-        alert(`Deu um erro: ${error.response.data}`);
+        alert(`Deu erro: ${error.response.data}`);
       }
     } else {
       alert("voce precisa preencher os campos");
