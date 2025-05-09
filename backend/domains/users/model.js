@@ -1,4 +1,4 @@
-import { Schema, model } from "mongoose";
+import { Schema, model } from 'mongoose';
 
 const userSchema = new Schema({
   name: String,
@@ -6,7 +6,7 @@ const userSchema = new Schema({
   password: String,
 });
 
-export default model("User", userSchema);
+export default model('User', userSchema);
 
 //Criando um esqueleto do usuario
 
