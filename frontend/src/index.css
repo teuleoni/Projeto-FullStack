@@ -1,7 +1,13 @@
 @import 'tailwindcss';
 
 @theme {
-  --color-primary: #ff385c;
+  --color-primary: hsl(9, 100%, 61%);
+  --color-secondary: hsl(9, 100%, 51%);
+  --color-secondary-100: hsl(9, 100%, 31%);
   --color-tahiti: #3ab7bf;
   --color-bermuda: #78dcca;
+}
+
+:root {
+  --a: hsl(9, 100%, 61%);
 }
