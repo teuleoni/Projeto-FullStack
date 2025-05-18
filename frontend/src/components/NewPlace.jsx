@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import Perks from './Perks';
+import axios from 'axios';
 
 const NewPlace = () => {
   const [title, setTitle] = useState('');
@@ -13,6 +14,10 @@ const NewPlace = () => {
   const [convidados, setConvidados] = useState('');
 
   const handleSubmit = (e) => {
+    //  const newPlace = await axios.post("/places", {
+
+    //  })
+
     e.preventDefault();
   };
 

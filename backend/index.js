@@ -1,7 +1,8 @@
 import 'dotenv/config';
 import express from 'express';
+import PlacesRoutes from './domains/users/places/routes.js';
 import UserRoutes from './domains/users/routes.js';
-import cors from 'cors'; // <-- importe aqui
+import cors from 'cors';
 import cookieParser from 'cookie-parser';
 
 const app = express();
@@ -16,6 +17,7 @@ app.use(
   }),
 ); // <-- use aqui
 app.use('/users', UserRoutes);
+app.use('/places', PlacesRoutes);
 
 app.listen(PORT, () => {
   console.log(`Servidor rodando ${PORT}`);
