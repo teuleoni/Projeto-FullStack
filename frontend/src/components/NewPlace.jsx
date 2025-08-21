@@ -1,25 +1,63 @@
 import React, { useState } from 'react';
 import Perks from './Perks';
 import axios from 'axios';
+import { Navigate } from 'react-router-dom';
+import { useUserContext } from '../context/UserContext';
 
 const NewPlace = () => {
+  const { user } = useUserContext();
   const [title, setTitle] = useState('');
   const [address, setAddress] = useState('');
-  const [fotos, setFotos] = useState('');
+  const [fotos, setFotos] = useState([]);
+  const [perks, setPerks] = useState([]);
   const [description, setDescription] = useState('');
   const [extras, setExtras] = useState('');
   const [price, setPrice] = useState('');
   const [checkin, setChekin] = useState('');
   const [checkout, setCheckout] = useState('');
   const [convidados, setConvidados] = useState('');
+  const [redirect, setRedirect] = useState(false);
 
-  const handleSubmit = (e) => {
-    //  const newPlace = await axios.post("/places", {
-
-    //  })
-
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    if (
+      title &&
+      address &&
+      // fotos.length > 0 &&
+      description &&
+      price &&
+      checkin &&
+      checkout &&
+      convidados
+    ) {
+      try {
+        const newPlace = await axios.post('/places', {
+          owner: user._id,
+          title,
+          address,
+          fotos,
+          description,
+          extras,
+          perks,
+          price,
+          checkin,
+          checkout,
+          convidados,
+        });
+
+        console.log(newPlace);
+
+        setRedirect(true);
+      } catch (error) {
+        console.error(JSON.stringify(error));
+        alert('Deu erro ao tentar criar um novo lugar');
+      }
+    } else {
+      alert('Preencha todas as informações antes de enviar ');
+    }
   };
+
+  if (redirect) return <Navigate to='/account/places' />;
 
   return (
     <form onSubmit={handleSubmit} className='w-full px-8 flex flex-col gap-6'>
@@ -119,7 +157,7 @@ const NewPlace = () => {
         <label htmlFor='perks' className='ml-2 text-2xl font-bold text-black'>
           Comodidades
         </label>
-        <Perks />
+        <Perks {...{ perks, setPerks }} />
       </div>
 
       <div className='flex flex-col gap-1'>
